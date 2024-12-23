@@ -29,7 +29,7 @@ export class LoginServiceImpl implements LoginService {
       (error) => new Left(error?.status),
       (response) => {
         const result = LoginResponse.fromJson(response);
-        if (result.status.failure === false) {
+        if (result.status.success === true) {
           return new Right(LoginModel.fromJson(result.toJson()));
         } else {
           return new Left(result.status);
